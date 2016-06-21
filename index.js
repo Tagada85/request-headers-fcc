@@ -20,6 +20,10 @@ app.all('/api/whoami', function(req, res){
 	res.end();
 });
 
+app.all('*', function(req, res){
+	res.redirect('/api/whoami');
+});
+
 app.listen(port);
 
 
