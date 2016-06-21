@@ -9,12 +9,13 @@ const port = process.env.PORT || 3000;
 
 app.all('/api/whoami', function(req, res){
 	let headers = req.headers;
+	let ip = req.ip;
 	let host = headers.host;
 	let language = headers['accept-language'];
 	let userAgent = headers['user-agent'];
 	let usedLanguage = getLanguage(language);
 	let software = getSoftware(userAgent);
-	res.json({'ipadress' : host,
+	res.json({'ipadress' : ip,
 		'language' : usedLanguage,
 		'software' : software});
 	res.end();
